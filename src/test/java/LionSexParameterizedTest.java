@@ -6,17 +6,17 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
-import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class LionSexParameterizedTest {
     @Parameterized.Parameters(name = "{index}: sex={0}, hasMane={1}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
-                {"Самец", true},
-                {"Самка", false},
+                {"Самей", true},
+                {"самка", false},
                 {"Kvir", false},
-                {"", false}
+                {"", false},
+                {"123", false}
         });
     }
     private final String sex;
@@ -26,15 +26,14 @@ public class LionSexParameterizedTest {
         this.sex = sex;
         this.hasMane = hasMane;
     }
+
     @Rule
     public ExpectedException exceptionRule = ExpectedException.none();
+
     @Test
-    public void testDoesHaveMane() throws Exception {
-        if (!sex.equals("Самец") && !sex.equals("Самка")) {
-            exceptionRule.expect(Exception.class);
-            exceptionRule.expectMessage("Используйте допустимые значения пола животного - самец или самка");
-        }
+    public void testDoesHaveManeException() throws Exception {
+        exceptionRule.expect(Exception.class);
+        exceptionRule.expectMessage("Используйте допустимые значения пола животного - самей или самка");
         Lion lion = new Lion(sex);
-        assertEquals(hasMane, lion.doesHaveMane());
     }
 }

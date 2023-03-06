@@ -12,6 +12,7 @@ public class FelineTest {
         Feline feline = new Feline();
         assertEquals("Кошачьи", feline.getFamily());
     }
+
     @Test
     public void testEatMeat() throws Exception {
         Animal animalMock = mock(Animal.class);
@@ -21,6 +22,7 @@ public class FelineTest {
         List<String> actualFood = feline.eatMeat();
         assertEquals(expectedFood, actualFood);
     }
+
     @Test(expected = Exception.class)
     public void testEmptyAnimalKind() throws Exception {
         Animal animalMock = mock(Animal.class);

@@ -25,6 +25,7 @@ public class FelineKittensParametrizedTest {
         this.inputKittensCount = inputKittensCount;
         this.expectedKittensCount = expectedKittensCount;
     }
+
     @Test
     public void testGetKittens() throws Exception {
         Feline feline = new Feline();

@@ -18,10 +18,12 @@ public class CatTest {
         MockitoAnnotations.initMocks(this);
         cat = new Cat(feline);
     }
+
     @Test
     public void testGetSound() {
         assertEquals("Мяу", cat.getSound());
     }
+
     @Test
     public void testGetFood() throws Exception {
         when(feline.eatMeat()).thenReturn(Arrays.asList("Животные", "Птицы", "Рыба"));

@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
+
 @RunWith(Parameterized.class)
 public class LionTest {
     @Parameterized.Parameters(name = "{index}: sex={0}, hasMane={1}")
@@ -24,6 +25,13 @@ public class LionTest {
         this.sex = sex;
         this.hasMane = hasMane;
     }
+
+    @Test
+    public void testDoesHaveMane() throws Exception {
+        Lion lion = new Lion(sex);
+        assertEquals(hasMane, lion.doesHaveMane());
+    }
+
     @Test
     public void testGetKittens() throws Exception {
         Feline feline = Mockito.mock(Feline.class);
@@ -32,6 +40,7 @@ public class LionTest {
         int actualKittens = lion.getKittens();
         assertEquals(1, actualKittens);
     }
+
     @Test
     public void testGetFood() throws Exception {
         Feline feline = Mockito.mock(Feline.class);
